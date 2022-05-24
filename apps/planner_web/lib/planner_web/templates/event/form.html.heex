@@ -1,0 +1,47 @@
+<.form let={f} for={@changeset} action={@action} class="flex flex-col w-full justify-center items-center mt-3">
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="flex flex-col w-full mt-2 m-0">
+    <%= label f, :name %>
+    <%= text_input f, :name, class: "bg-white h-10 rounded outline-none px-4 text-md border border-black bg-transparent" %>
+    <%= error_tag f, :name %>
+  </div>
+
+  <div class="flex w-full mt-2 m-0 ">
+    <%= label f, :date, class: "mr-2" %>
+    <div class="border rounded border-black">
+      <%= date_select f, :date, year: [options: @today.year..@today.year+100], default: {@today.year, @today.month, @today.day}, builder: fn b ->  %>
+        <%= b.(:day, []) %> <%= b.(:month, []) %><%= b.(:year, []) %>
+      <% end %>
+    </div>
+    <%= error_tag f, :date %>
+  </div>
+
+  <div class="flex w-full mt-2 m-0">
+    <%= label f, :time, class: "mr-2" %>
+    <div class="border rounded border-black">
+      <%= time_select f, :time %>
+    </div>
+    <%= error_tag f, :time %>
+  </div>
+
+  <div class="flex flex-col w-full mt-2 m-0">
+    <%= label f, :description %>
+    <%= text_input f, :description, class: "bg-white h-10 rounded outline-none px-4 text-md border border-black bg-transparent" %>
+    <%= error_tag f, :description %>
+  </div>
+
+  <div class="flex flex-col w-full mt-2 m-0">
+    <%= label f, :image %>
+    <%= text_input f, :image, class: "bg-white h-10 rounded outline-none px-4 text-md border border-black bg-transparent" %>
+    <%= error_tag f, :image %>
+  </div>
+
+  <div class="flex flex-col w-full mt-5">
+    <%= submit "Create Event", class: "btn btn-primary w-full bg-blue-700 h-10 rounded text-white font-medium text-md" %>
+  </div>
+</.form>

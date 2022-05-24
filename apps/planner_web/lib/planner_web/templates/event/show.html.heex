@@ -1,0 +1,59 @@
+<div class="w-full h-full flex justify-center">
+  <div class="w-full h-full max-w-xl flex flex-col">
+  <div>
+    <%= img_tag(@event.image, class: "max-h-36 h-auto w-full object-cover") %>
+    <div class="p-3">
+      <h1 class="text-2xl font-bold"><%= @event.name %></h1>
+      <p class="text-sm">Event created by <strong> <%= @user.username %> </strong></p>
+      <div class="flex gap-2 items-end">
+        <p class="text-lg"><%= @event.date %></p>
+        <p class="text-sm text-gray-500"><%= @event.time.hour %>:<%= @event.time.minute %></p>
+      </div>
+      <%= @event.description %>
+    </div>
+    
+  </div>
+  
+  <div class="bg-gray-100 ">
+    <div class="p-3">
+      <h2 class="text-lg font-bold">Invited users</h2>
+      <ul class="">
+        <%= for invitee <- @invited do %>
+          <li class="flex items-center gap-2">
+            <%= case invitee.accepted do %>
+            <%= 0 -> %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <% 1 -> %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <% 2 -> %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </svg>
+            <% end %>
+            <%= link invitee.username, to: Routes.user_path(@conn, :show, invitee.id) %> 
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    
+    <%= if @current_user.id == @event.user_id do %>
+      <div class="flex flex-col mt-3">
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :invite_error) %></p>
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :invite_info) %></p>
+        <%= form_for @conn, Routes.event_path(@conn, :invite, @event), [as: :invite, class: "flex flex-col w-full"], fn f -> %>
+            <%= text_input f, :username, placeholder: "username", class: "bg-white h-10 outline-none px-4 text-md border border-black bg-transparent" %>
+            <%= error_tag f, :username %>
+          <%= submit "Invite", class: "btn btn-primary w-full bg-blue-700 h-10 text-white font-medium text-md" %>
+        <% end %>
+      </div>
+      
+
+    <% end %>
+  </div>
+    
+  </div>
+</div>

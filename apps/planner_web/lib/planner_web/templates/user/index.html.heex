@@ -1,0 +1,27 @@
+<div class="w-full h-full flex justify-center">
+  <div class="w-full h-full max-w-md flex flex-col items-center mt-10">
+    <h1 class="text-2xl font-bold">User overview</h1>
+    <span class="mt-5 bg-indigo-500 px-5 py-2 rounded text-white"><%= link "New User", to: Routes.user_path(@conn, :new) %></span>
+    <div class="flex flex-col items-center px-3 w-full mt-5">
+      <%= for user <- @users do %>
+        <div class="w-full flex shadow-md border rounded-md mt-3">
+          <a class="flex p-3 flex-grow rounded-l-md border-r-2" href={Routes.user_path(@conn, :show, user)} >
+            <div  class="flex gap-5 p-3">
+              <%= img_tag(user.image, class: "h-20 w-20 rounded-full mb-2 object-cover") %>
+
+              <div class="flex flex-col justify-center">
+                <p class="text-2xl font-bold"><%= user.username %></p>
+              </div>
+            </div>
+          </a>
+          <div class="flex flex-col items-start justify-center p-4  rounded-r-md">
+              <span><%= link "Show", to: Routes.user_path(@conn, :show, user) %></span>
+              <span><%= link "Edit", to: Routes.user_path(@conn, :edit, user) %></span>
+              <span><%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
+            </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

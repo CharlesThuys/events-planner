@@ -1,0 +1,58 @@
+<div class="w-full h-full flex justify-center">
+  <div class="w-full h-full max-w-md flex flex-col">
+    <div class="p-1 mb-5 pb-2 border-b-2 w-full">
+      <div class="w-full p-5 flex justify-between m-0">
+        <div class="flex flex-col justify-center items-center">
+          <%= img_tag(@user.image, class: "h-20 w-20 rounded-full mb-2
+          object-cover") %>
+          <strong><%= @user.username %> </strong>
+        </div>
+        <div class="flex gap-5 px-5">
+          <div class="flex flex-col justify-center items-center">
+            <p class="text-lg m-0 p-0">
+              <strong><%= @user_info.followerCount %></strong>
+            </p>
+            <p class="text-sm m-0 p-0"><strong>Followers</strong></p>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <p class="text-lg"><strong><%= @user_info.followingCount %></strong></p>
+            <p class="text-sm"><strong>Following</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full flex justify-center">
+        <%= if @current_user.id != @user.id  do %> 
+          <%= if @user_info.isFollowing do %>
+            <%= link "Unfollow", to: Routes.user_path(@conn, :unfollow, @user), method: :post, class: "w-full flex justify-center items-center bg-gray-800 h-10 rounded font-medium text-white hover:bg-gray-700" %> 
+          <% else %>
+            <%= link "Follow", to: Routes.user_path(@conn, :follow, @user), method: :post, class: "w-full flex justify-center items-center bg-indigo-500 h-10 rounded font-medium text-white hover:bg-indigo-700" %>         
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center px-3">
+      <%= if @user_info.isFollowing or @current_user.id == @user.id do %> 
+        <%= if Enum.count(@events) == 0 do %>
+        <p>User has no events</p>
+        <% end %> 
+        <%= for event <- @events do %>
+          <div class="w-full shadow-md border rounded-md mt-3">
+            <a class="flex justify-between p-3" href={Routes.event_path(@conn, :show, event)}>
+              <div class="flex flex-col justify-center">
+                <p class="text-md font-bold"><%= event.name %></p>
+                <p class="text-md text-gray-800"><%= event.date %></p>
+                <p class="text-sm text-gray-500">
+                  <%= event.time.hour %>:<%= event.time.minute %>
+                </p>
+              </div>
+              <%= img_tag(event.image, class: "h-20 w-20 rounded-full mb-2 object-cover") %>
+            </a>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Must follow user to see events</p>
+      <% end %>
+    </div>
+  </div>
+</div>

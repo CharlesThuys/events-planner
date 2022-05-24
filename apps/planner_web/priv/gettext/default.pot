@@ -1,0 +1,62 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:4
+msgid "Customize your experience!"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:3
+msgid "Settings"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:17
+msgid "Change your password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:8
+msgid "Choose your language"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:7
+msgid "Languages"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:16
+#: lib/planner_web/templates/page/settings.html.heex:20
+msgid "Password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:45
+msgid "Generate an api-key"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:31
+msgid "Change your profile image"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:34
+msgid "Image link"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:30
+msgid "Profile image"
+msgstr ""

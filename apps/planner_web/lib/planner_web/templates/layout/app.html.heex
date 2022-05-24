@@ -1,0 +1,6 @@
+<main class="flex flex-grow flex-col min-h-max w-full">
+
+  <p class="alert alert-info w-full" role="alert"><%= get_flash(@conn, :info) %></p>
+  <p class="alert alert-danger w-full" role="alert"><%= get_flash(@conn, :error) %></p>
+  <%= @inner_content %>
+</main>

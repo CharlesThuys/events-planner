@@ -1,0 +1,13 @@
+<div class="w-full h-full justify-center items-center flex flex-col">
+    <div class="flex flex-col px-3 max-w-md w-full justify-center items-center h-full ">
+
+        <div class="w-full">
+            <h2 class="text-2xl font-bold">Edit event</h2>
+            <p class="text-sm">Create an event to invite your friends to!</p>
+        </div>
+
+        <%= render "form.html", Map.put(assigns, :action, Routes.event_path(@conn, :update, @event)) %>
+
+        <span><%= link "Back", to: Routes.event_path(@conn, :index) %></span>
+    </div>
+</div>

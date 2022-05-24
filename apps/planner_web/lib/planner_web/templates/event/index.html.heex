@@ -1,0 +1,36 @@
+<div class="w-full h-full flex justify-center">
+  <div class="w-full h-full max-w-md flex flex-col items-center mt-10">
+    <h1 class="text-2xl font-bold"><%= @titel %></h1>
+    <span class="mt-5 bg-indigo-500 px-5 py-2 rounded text-white"><%= link "New Event", to: Routes.event_path(@conn, :new) %></span>
+    <div class="flex flex-col items-center px-3 w-full mt-5">
+
+      <%= for event <- @events do %>
+        <div class="w-full shadow-md border rounded-md mt-3">
+          <a class="flex justify-between  p-3" href={Routes.event_path(@conn, :show, event.id)} >
+            <div class="flex flex-col justify-center">
+              <p class="text-md font-bold"><%= event.name %></p>
+              <p class="text-md text-gray-800"><%= event.date %></p>
+              <p class="text-sm text-gray-500"><%= event.time.hour %>:<%= event.time.minute %></p>
+            </div>
+            <%= img_tag(event.image, class: "h-20 w-20 rounded-full mb-2 object-cover") %>
+          </a>
+          <div>
+            <%= case event.accepted do %>
+              <%= 0 -> %> <!-- No response -->
+                <div class="w-full grid grid-flow-col auto-cols-auto">
+                  <%= link "Accept", to: Routes.event_path(@conn, :accept_invite, event.id), method: :post, class: "bg-green-500 h-10 rounded-bl-md font-medium text-white flex justify-center items-center hover:bg-green-400 w-full" %>
+                  <%= link "Decline", to: Routes.event_path(@conn, :decline_invite, event.id), method: :post, class: "bg-red-500 h-10 rounded-br-md font-medium text-white flex justify-center items-center hover:bg-red-400 w-full" %>
+                </div>
+
+              <% 1 -> %> <!-- Accepted -->
+                <%= link "Accepted", to: Routes.event_path(@conn, :reset_invite, event.id), method: :post, class: "w-full bg-indigo-500 h-10 rounded-b-md font-medium text-white flex justify-center items-center hover:bg-indigo-700" %>
+
+              <% 2 -> %> <!-- Declined -->
+                <%= link "Declined", to: Routes.event_path(@conn, :reset_invite, event.id), method: :post, class: "w-full bg-gray-800 h-10 rounded-b-md font-medium text-white flex justify-center items-center hover:bg-gray-700" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

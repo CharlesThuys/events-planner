@@ -1,0 +1,19 @@
+<div class="w-full h-full flex justify-center">
+  <div class="w-full h-full max-w-md flex flex-col items-center mt-10">
+    <h1 class="text-2xl font-bold">User overview</h1>
+    <div class="flex flex-col items-center px-3 w-full mt-5">
+      <%= for user <- @users do %>
+        <div class="w-full shadow-md border rounded-md mt-3">
+          <a class="flex gap-5 p-3" href={Routes.user_path(@conn, :show, user)} >
+            <%= img_tag(user.image, class: "h-20 w-20 rounded-full mb-2 object-cover") %>
+
+            <div class="flex flex-col justify-center">
+              <p class="text-2xl font-bold"><%= user.username %></p>
+            </div>
+          </a>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

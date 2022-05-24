@@ -1,0 +1,63 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: nl\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:4
+msgid "Customize your experience!"
+msgstr "Pas je ervaring aan!"
+
+#, elixir-autogen, elixir-format, fuzzy
+#: lib/planner_web/templates/page/settings.html.heex:3
+msgid "Settings"
+msgstr "Instellingen"
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:17
+msgid "Change your password"
+msgstr "Verander jouw wachtwoord"
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:8
+msgid "Choose your language"
+msgstr "Kies uw taal"
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:7
+msgid "Languages"
+msgstr "Talen"
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:16
+#: lib/planner_web/templates/page/settings.html.heex:20
+msgid "Password"
+msgstr "Wachtwoord"
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:45
+msgid "Generate an api-key"
+msgstr "Genereer een api-key"
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:31
+msgid "Change your profile image"
+msgstr "Verander jouw profiel foto"
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:34
+msgid "Image link"
+msgstr "Foto link"
+
+#, elixir-autogen, elixir-format
+#: lib/planner_web/templates/page/settings.html.heex:30
+msgid "Profile image"
+msgstr "Profiel foto"

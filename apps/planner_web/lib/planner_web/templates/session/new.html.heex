@@ -1,0 +1,32 @@
+<div class="w-full h-full justify-center items-center flex flex-col">
+    <div class="flex flex-col px-3 max-w-md w-full justify-center items-center h-full ">
+        <div class="w-full">
+            <h2 class="text-2xl font-bold">Sign In</h2>
+            <p class="text-sm">Please sign in to continue.</p>
+        </div>
+        
+
+        <%= form_for @changeset, @action, [class: "flex flex-col w-full justify-center items-center mt-3"], fn f -> %>
+    
+        <div class="flex flex-col w-full mt-2">
+            <%= label f, :username, class: "" %>
+            <%= text_input f, :username, class: "bg-white h-10 rounded outline-none px-4 text-md border border-black bg-transparent" %>
+            <%= error_tag f, :username %>
+        </div>
+        
+        <div class="flex flex-col w-full mt-2">
+            <%= label f, :password, class: "" %>
+            <%= password_input f, :password, class: "bg-white h-10 rounded outline-none px-4 text-md border border-black bg-transparent" %>
+            <%= error_tag f, :password %>
+        </div>
+        
+        <div class="flex flex-col w-full mt-5">
+            <%= submit "Submit", class: "btn btn-primary w-full bg-blue-700 h-10 rounded text-white font-medium text-md" %>
+        </div>
+        <% end %>
+
+        <p class="absolute bottom-10">Don't have an account? <span><a href={Routes.user_path(@conn, :register_page) } class="text-blue-400 underline underline-offset-1">Sign Up</a></span></p>
+   
+    </div>
+        
+</div>
